@@ -48,34 +48,6 @@ export default function Update() {
 
   return (
     <div className="min-h-screen bg-white text-gray-900">
-      {/* Navigation Bar */}
-      <Navbar className="bg-white shadow-md" isBordered>
-        <NavbarBrand>
-          <Link href="/" className="text-2xl font-bold text-gray-900">
-            岩石切片
-          </Link>
-        </NavbarBrand>
-        <NavbarContent className="gap-6" justify="end">
-          <NavbarItem>
-            <Button
-              as={Link}
-              href="/gallery"
-              className="text-lg bg-gray-200 text-gray-900 hover:bg-gray-300"
-            >
-              Gallery
-            </Button>
-          </NavbarItem>
-          <NavbarItem isActive>
-            <Button
-              as={Link}
-              href="/update"
-              className="text-lg bg-blue-600 text-white hover:bg-blue-700"
-            >
-              Update
-            </Button>
-          </NavbarItem>
-        </NavbarContent>
-      </Navbar>
 
       {/* Upload Section */}
       <section className="py-16 px-4">
@@ -105,11 +77,10 @@ export default function Update() {
             </Button>
             {uploadStatus && (
               <p
-                className={`text-center text-lg ${
-                  uploadStatus.includes('成功')
-                    ? 'text-green-600'
-                    : 'text-red-600'
-                }`}
+                className={`text-center text-lg ${uploadStatus.includes('成功')
+                  ? 'text-green-600'
+                  : 'text-red-600'
+                  }`}
               >
                 {uploadStatus}
               </p>
