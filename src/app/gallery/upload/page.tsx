@@ -1,8 +1,9 @@
 'use client';
 
 import { useState, useRef } from 'react';
-import { Button, Input, Navbar, NavbarBrand, NavbarContent, NavbarItem } from '@heroui/react';
+import { Button, Input } from '@heroui/react';
 import Link from 'next/link';
+import { uploadSliceFile } from '@/app/lib/datafetch';
 
 export default function Update() {
   const [file, setFile] = useState<File | null>(null);
@@ -23,32 +24,22 @@ export default function Update() {
       return;
     }
 
-    const formData = new FormData();
-    formData.append('file', file);
-
     try {
-      const response = await fetch('http://localhost:3000/upload', {
-        method: 'POST',
-        body: formData,
-      });
-
-      if (response.ok) {
-        setUploadStatus('文件上传成功！');
-        setFile(null);
-        if (fileInputRef.current) {
-          fileInputRef.current.value = '';
-        }
-      } else {
-        setUploadStatus('上传失败，请稍后重试。');
+      const result = await uploadSliceFile(file);
+      setUploadStatus(result.message);
+      setFile(null);
+      if (fileInputRef.current) {
+        fileInputRef.current.value = '';
       }
     } catch (error) {
-      setUploadStatus('上传出错，请检查网络或服务器。');
+      setUploadStatus(
+        error instanceof Error ? error.message : '上传出错，请检查网络或服务器。'
+      );
     }
   };
 
   return (
     <div className="min-h-screen bg-white text-gray-900">
-
       {/* Upload Section */}
       <section className="py-16 px-4">
         <h1 className="text-4xl font-bold text-center mb-12 text-gray-900">
@@ -77,10 +68,9 @@ export default function Update() {
             </Button>
             {uploadStatus && (
               <p
-                className={`text-center text-lg ${uploadStatus.includes('成功')
-                  ? 'text-green-600'
-                  : 'text-red-600'
-                  }`}
+                className={`text-center text-lg ${
+                  uploadStatus.includes('成功') ? 'text-green-600' : 'text-red-600'
+                }`}
               >
                 {uploadStatus}
               </p>

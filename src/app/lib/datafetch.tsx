@@ -40,3 +40,26 @@ export async function getSliceList() : Promise<GalleryItemData[]> {
 
     return sliceList;
 }
+
+
+// Upload a slice file to the server
+export async function uploadSliceFile(file: File): Promise<{ message: string }> {
+    const formData = new FormData();
+    formData.append('file', file);
+  
+    try {
+      const response = await axios.post(`${serverUrl}/upload/`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      return { message: response.data.message || '文件上传成功！' };
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        throw new Error(
+          error.response?.data?.detail || '上传失败，请稍后重试。'
+        );
+      }
+      throw new Error('上传出错，请检查网络或服务器。');
+    }
+  }
