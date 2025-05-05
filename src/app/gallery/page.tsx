@@ -4,7 +4,7 @@ import { Button, Navbar, NavbarBrand, NavbarContent, NavbarItem } from '@heroui/
 import { Card, CardBody, CardHeader } from '@heroui/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { rockSlices } from "@/app/lib/dataplaceholder";
+import { rockSlices } from "@/app/lib/dataexample";
 
 export default function Gallery() {
   const rockslices = rockSlices;

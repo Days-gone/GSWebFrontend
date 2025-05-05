@@ -8,7 +8,7 @@ export default function NavHeader() {
         <Navbar className="bg-white shadow-md" isBordered>
         <NavbarBrand>
           <Link href="/" className="text-2xl font-bold text-gray-900">
-            岩石切片
+            RockSlice
           </Link>
         </NavbarBrand>
         <NavbarContent className="gap-6" justify="end">
