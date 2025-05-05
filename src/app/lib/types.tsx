@@ -1,3 +1,9 @@
+export interface GalleryItemData {
+    id: string;
+    title: string;
+    imgUrl: string;
+};
+
 export interface SliceImgCardData {
     id: number;
     title: string;
