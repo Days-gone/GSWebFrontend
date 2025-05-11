@@ -72,4 +72,6 @@ export async function getSliceImgCardData(id: number): Promise<any> {
     title: `Slice ${id}`,
     imgUrls: [ori_url, cam_url, glcm_url],
   }
+  console.log(ans_obj);
+  return ans_obj;
 }

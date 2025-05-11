@@ -62,7 +62,7 @@ export default function Gallery() {
               </CardHeader>
               <CardBody>
                 <div className="relative w-full h-96">
-                  <Image alt={slice.title} fill className="object-cover rounded-md" src={slice.imgUrl}/>
+                  <Image alt={slice.title} fill className="object-cover rounded-md" src={slice.imgUrl} />
                 </div>
               </CardBody>
             </Card>

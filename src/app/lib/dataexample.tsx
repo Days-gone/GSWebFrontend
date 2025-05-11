@@ -22,15 +22,15 @@ export const detailData: SliceImgCardData = {
 }
 
 export const metricdata: SliceCardData = {
-  title: '网页切片功能分析',
-  description: '网页切片功能允许用户快速分割和处理网页内容，提高数据处理效率。以下展示切片操作的性能指标。',
+  title: '碳酸盐岩石切片',
+  description: '这是一块碳酸盐岩石切片，其中包含了丰富的矿物质和纹理特征。标本样本来自成都理工大学毕业生提供的演示切片资源。',
   metric1: {
     name: '处理时间 (ms)',
-    values: [120, 200, 150, 180, 220],
+    values: [120, 200],
   },
   metric2: {
     name: '内存占用 (MB)',
     values: [50, 60, 55, 70, 65],
   },
-  categories: ['切片1', '切片2', '切片3', '切片4', '切片5'],
+  categories: ['切片1', '切片2'],
 };
