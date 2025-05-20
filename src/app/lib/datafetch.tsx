@@ -51,14 +51,14 @@ export async function uploadSliceFile(file: File): Promise<{ message: string }> 
         'Content-Type': 'multipart/form-data',
       },
     });
-    return { message: response.data.message || '文件上传成功！' };
+    return { message: response.data.message || 'Upload Success' };
   } catch (error) {
     if (axios.isAxiosError(error)) {
       throw new Error(
-        error.response?.data?.detail || '上传失败，请稍后重试。'
+        error.response?.data?.detail || '上传失败'
       );
     }
-    throw new Error('上传出错，请检查网络或服务器。');
+    throw new Error('上传出现');
   }
 }
 
