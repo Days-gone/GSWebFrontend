@@ -11,10 +11,14 @@ function getImgUrl(img_card_data: SliceImgCardData, selected: string) {
     switch (selected) {
         case "ori":
             return img_card_data.imgUrls[0];
-        case "cam":
+        case "mas":
             return img_card_data.imgUrls[1];
-        case "glcm":
+        case "ove":
             return img_card_data.imgUrls[2];
+        case "tra":
+            return img_card_data.imgUrls[3];
+        case "bou":
+            return img_card_data.imgUrls[4];
         default:
             return img_card_data.imgUrls[0];
     }
@@ -27,8 +31,10 @@ export default function SliceImgCard(
     let [selected, setSelect] = useState("ori");
     let choices = [
         { key: "ori", title: "ORI" },
-        { key: "cam", title: "CAM" },
-        { key: "glcm", title: "GLCM" },
+        { key: "mas", title: "MAS" },
+        { key: "ove", title: "OVE" },
+        { key: "tra", title: "TRA" },
+        { key: "bou", title: "BOU" },
     ];
 
     return (

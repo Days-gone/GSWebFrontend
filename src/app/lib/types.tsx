@@ -1,11 +1,10 @@
 export interface GalleryItemData {
-    id: string;
-    title: string;
-    imgUrl: string;
+    uuid: string;
+    url: string;
 };
 
 export interface SliceImgCardData {
-    id: number;
+    uuid: number;
     title: string;
     imgUrls: Array<string>;
 };

@@ -16,7 +16,6 @@ export default function Gallery() {
     async function fetchSlices() {
       try {
         const slices = await getSliceList();
-        console.log(slices);
         setRockSlices(slices);
       } catch (err) {
         setError('Failed to load rock slices');
@@ -39,7 +38,7 @@ export default function Gallery() {
     return <div className="text-red-500 text-center">{error}</div>;
   }
 
-  console.log(rockSlices);
+  console.log('Rock slices:', rockSlices);
 
   return (
     <div className="min-h-screen bg-white text-gray-900">
@@ -48,25 +47,30 @@ export default function Gallery() {
           岩石切片画廊
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[96%] mx-auto">
-          {rockSlices.map((slice) => (
-            <Card
-              key={slice.id}
-              className="bg-white border-gray-200 shadow-xl hover:shadow-2xl transition-shadow duration-300 w-full"
-              isHoverable
-              isPressable
-              as={Link}
-              href={`/gallery/${slice.id}`}
-            >
-              <CardHeader className="text-gray-900">
-                <h3 className="text-2xl font-semibold">{slice.title}</h3>
-              </CardHeader>
-              <CardBody>
-                <div className="relative w-full h-96">
-                  <Image alt={slice.title} fill className="object-cover rounded-md" src={slice.imgUrl} />
-                </div>
-              </CardBody>
-            </Card>
-          ))}
+          {rockSlices.map(({ uuid, url }) => {
+            // 提取 UUID 的最后 4 位并添加 "Slice" 前缀
+            const displayName = `SliceID:${uuid.slice(-4)}`;
+
+            return (
+              <Card
+                key={uuid}
+                className="bg-white border-gray-200 shadow-xl hover:shadow-2xl transition-shadow duration-300 w-full"
+                isHoverable
+                isPressable
+                as={Link}
+                href={`/gallery/${uuid}`}
+              >
+                <CardHeader className="text-gray-900">
+                  <h3 className="text-2xl font-semibold">{displayName}</h3>
+                </CardHeader>
+                <CardBody>
+                  <div className="relative w-full h-96">
+                    <Image alt={displayName} fill className="object-cover rounded-md" src={url} />
+                  </div>
+                </CardBody>
+              </Card>
+            );
+          })}
         </div>
       </section>
     </div>
