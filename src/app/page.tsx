@@ -80,7 +80,7 @@ export default function Home() {
           {[
             { src: '/images/rock1.jpg', title: '花岗岩切片' },
             { src: '/images/rock2.jpg', title: '石英岩切片' },
-            // { src: '/images/rock3.jpg', title: '玄武岩切片' },
+            { src: '/images/rock3.png', title: '玄武岩切片' },
           ].map((item, index) => (
             <div
               key={index}
