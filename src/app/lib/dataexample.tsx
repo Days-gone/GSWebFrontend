@@ -11,7 +11,7 @@ export const rockSlices = [
 ];
 
 export const detailData: SliceImgCardData = {
-  id: 1,
+  uuid: 1,
   title: '花岗岩切片 1',
   imgUrls: [
     '/images/rock1.jpg',
